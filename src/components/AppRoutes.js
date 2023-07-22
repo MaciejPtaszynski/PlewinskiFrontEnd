@@ -7,12 +7,12 @@ import SettingsPage from "./SettingsPage";
 import Header from "./Header";
 import {Box} from "@mui/material";
 
-export default function AppRoutes () {
+export default function AppRoutes({handleClick}) {
   return (
     <BrowserRouter>
       <SidebarNavigator/>
       <Box sx={{display: "flex", justifyContent: "flex-end"}}>
-        <Header/>
+        <Header handleLogout={handleClick}/>
       </Box>
       <Routes>
         <Route path={'/'} element={<HomePage/>}/>
