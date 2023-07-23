@@ -6,7 +6,7 @@ import {Box} from "@mui/material";
 
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   const login = () => {
     setIsLogin(true)
