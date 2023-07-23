@@ -6,51 +6,82 @@ import DriverCard from "./DriverCard";
 
 export default function DriversPage() {
 
-  const[people, setPeople] = useState( [
+  const [car, setCar] = useState("");
+
+  const carList = [
     {
-      id:1,
-      firstName: "Anna",
-      lastName: "Kowalska",
-      photo: img
+      id: 1,
+      name: 'Toyota Corolla',
+      mileage: 80000,
     },
     {
       id: 2,
-      firstName: "Jan",
-      lastName: "Nowak",
-      photo: img
+      name: 'Honda Civic',
+      mileage: 65000,
     },
     {
-      id:3,
-      firstName: "Katarzyna",
-      lastName: "Wiśniewska",
-      photo: img
+      id: 3,
+      name: 'Volkswagen Golf',
+      mileage: 72000,
     },
     {
-      id:4,
-      firstName: "Piotr",
-      lastName: "Kowalczyk",
-      photo: img
+      id: 4,
+      name: 'Ford Focus',
+      mileage: 55000,
     },
     {
-      id:5,
-      firstName: "Magdalena",
-      lastName: "Kowal",
-      photo: img
-    }
+      id: 5,
+      name: 'Mazda CX-5',
+      mileage: 43000,
+    },
+  ]
+
+  const [people, setPeople] = useState([
+      {
+        id: 1,
+        firstName: "Anna",
+        lastName: "Kowalska",
+        photo: img
+      },
+      {
+        id: 2,
+        firstName: "Jan",
+        lastName: "Nowak",
+        photo: img
+      },
+      {
+        id: 3,
+        firstName: "Katarzyna",
+        lastName: "Wiśniewska",
+        photo: img
+      },
+      {
+        id: 4,
+        firstName: "Piotr",
+        lastName: "Kowalczyk",
+        photo: img
+      },
+      {
+        id: 5,
+        firstName: "Magdalena",
+        lastName: "Kowal",
+        photo: img
+      }
     ]
   );
   const [newDriver, setNewDriver] = useState(" ");
 
+
   const handleAddDriver = () => {
-    if(newDriver.trim() !== '') {
+    if (newDriver.trim() !== '') {
       const newItem = {id: Date.now(), firstName: newDriver, lastName: newDriver};
-      setPeople([...people,newItem]);
+      setPeople([...people, newItem]);
       setNewDriver("")
     }
   };
 
   const handleRemoveDriver = (id) => {
-    const removeDriver = people.filter((item) => item.id !==id);
+    const removeDriver = people.filter((item) => item.id !== id);
     setPeople(removeDriver)
   }
 
@@ -60,12 +91,15 @@ export default function DriversPage() {
   };
 
   const peopleList = people.map((item) => {
-    return <Box>
+    return <Box key={item.id}>
       <DriverCard
         name={item.firstName}
         surname={item.lastName}
         image={item.photo}
         handleRemove={() => handleRemoveDriver(item.id)}
+        carList={carList}
+        carValue={item.id === car ? car : ""}
+        onChange={(selectedCar) => setCar(selectedCar)}
       />
 
     </Box>
@@ -82,14 +116,14 @@ export default function DriversPage() {
           type="text"
           name="firstName"
           value={newDriver.firstName}
-          onChange={(e)=> setNewDriver(e.target.value)}
+          onChange={(e) => setNewDriver(e.target.value)}
           placeholder="Imię"
         />
         <input
           type="text"
           name="lastName"
           value={newDriver.lastName}
-          onChange={(e)=> setNewDriver(e.target.value)}
+          onChange={(e) => setNewDriver(e.target.value)}
           placeholder="Nazwisko"
         />
         <button type="button" onClick={handleAddDriver}>
