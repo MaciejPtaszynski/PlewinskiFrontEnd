@@ -11,8 +11,10 @@ import {useTranslation} from "react-i18next";
 export default function SidebarNavigator() {
   const {t} = useTranslation();
   const {isDrawerOpen, toggleDrawer} = useDrawer();
+  
   const isMobile = useMediaQuery('(max-width: 1000px)');
   const [selectedButton, setSelectedButton] = useState("home");
+
   const handleSelectedButton = (item) => {
     setSelectedButton(item)
   };

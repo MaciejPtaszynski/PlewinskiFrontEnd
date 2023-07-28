@@ -6,7 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 
-export default function Header() {
+export default function Header({handleLogout}) {
   const {toggleDrawer} = useDrawer();
   const {t, i18n} = useTranslation();
   const isMobile = useMediaQuery('(max-width: 1000px)');
@@ -63,7 +63,7 @@ export default function Header() {
         </Select>
       </FormControl>
       {isMobile && <MenuIcon style={menuIcon} onClick={toggleDrawer}>open drawer</MenuIcon>}
-      <LogoutIcon style={logoutIcon}/>
+      <LogoutIcon  onClick={handleLogout}  style={logoutIcon}/>
     </Box>
   )
 }
