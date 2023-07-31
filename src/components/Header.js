@@ -4,9 +4,11 @@ import {useDrawer} from "../context/drawerContext/DrawerContext";
 import {useTranslation} from "react-i18next";
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {useAuth} from "../context/authContext/AuthContext";
 
 
-export default function Header({handleLogout}) {
+export default function Header() {
+  const {logout} = useAuth();
   const {toggleDrawer} = useDrawer();
   const {t, i18n} = useTranslation();
   const isMobile = useMediaQuery('(max-width: 1000px)');
@@ -24,7 +26,7 @@ export default function Header({handleLogout}) {
     justifyContent: "flex-end",
     alignItems: "center",
     gap: 30,
-    boxShadow: !isMobile ?  `rgba(0, 0, 0, 0.05) 0px 3px 8px` : "none",
+    boxShadow: !isMobile ? `rgba(0, 0, 0, 0.05) 0px 3px 8px` : "none",
     padding: 5,
     backgroundColor: !isMobile ? "#f8f9fa" : "transparent",
   };
@@ -34,18 +36,15 @@ export default function Header({handleLogout}) {
     marginTop: 20,
     marginBottom: 10,
     padding: "10px 0",
-
   };
-
 
   const menuIcon = {
     cursor: "pointer"
   };
 
   const logoutIcon = {
-    paddingRight: !isMobile ?  50  : 20,
+    paddingRight: !isMobile ? 50 : 20,
     cursor: "pointer"
-
   }
 
   return (
@@ -63,7 +62,7 @@ export default function Header({handleLogout}) {
         </Select>
       </FormControl>
       {isMobile && <MenuIcon style={menuIcon} onClick={toggleDrawer}>open drawer</MenuIcon>}
-      <LogoutIcon  onClick={handleLogout}  style={logoutIcon}/>
+      <LogoutIcon onClick={logout} style={logoutIcon}/>
     </Box>
   )
 }

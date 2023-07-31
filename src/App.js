@@ -1,29 +1,36 @@
-import React, {useState} from "react";
-import {DrawerProvider} from "./context/drawerContext/DrawerContext";
-import AppRoutes from "./components/AppRoutes";
-import LoginPage from "./components/LoginPage";
-import {Box} from "@mui/material";
-
+import React, {useState, useEffect} from 'react';
+import {DrawerProvider} from './context/drawerContext/DrawerContext';
+import AppRoutes from './components/AppRoutes';
+import LoginPage from './components/LoginPage';
+import {Box} from '@mui/material';
+import {useAuth} from './context/authContext/AuthContext';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const {user, logout} = useAuth();
 
-  const login = () => {
-    setIsLogin(true)
-  };
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-  const logout = () => {
-    setIsLogin(false)
-  };
+  useEffect(() => {
+    console.log('user:', user);
+    if (isMounted && !user) {
+      logout();
+    }
+  }, [isMounted, user]);
 
-  return (<Box>
-      {isLogin ?
+  return (
+    <Box>
+      {user ? (
         <DrawerProvider>
           <AppRoutes handleClick={logout}/>
-        </DrawerProvider> : <LoginPage handleClick={login}/>}
+        </DrawerProvider>
+      ) : (
+        <LoginPage/>
+      )}
     </Box>
-
-  )
+  );
 }
 
 export default App;
