@@ -9,6 +9,7 @@ import {useAuth} from "../context/authContext/AuthContext";
 
 export default function Header() {
   const {logout} = useAuth();
+
   const {toggleDrawer} = useDrawer();
   const {t, i18n} = useTranslation();
   const isMobile = useMediaQuery('(max-width: 1000px)');

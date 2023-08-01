@@ -5,7 +5,7 @@ import Img from "../assetss/pexels-albin-berlin-906982.jpg";
 import Logo from "../assetss/logotyp_plewinski.png"
 import { display, padding } from '@mui/system';
 
-export default function LoginPage({ handleClick }) {
+export default function LoginPage() {
 
   const {login} = useAuth();
   const [email, setEmail] = useState("");
@@ -13,7 +13,6 @@ export default function LoginPage({ handleClick }) {
 
   const handleLogin = () => {
     login(email);
-
   };
 
   const container = {
@@ -23,7 +22,8 @@ export default function LoginPage({ handleClick }) {
     backgroundSize: "cover",
     width: "100%",
     height: "100vh",
-  }
+  };
+  
   const formWrapper = {
     backgroundColor: "whitesmoke",
     width: "600px",
@@ -32,18 +32,20 @@ export default function LoginPage({ handleClick }) {
     flexDirection:"column", 
     alignItems:'center',
     justifyContent:"center"
-    
-  }
+  };
+  
   const logo = {
     width: "100%",
     height: "200px",
     marginBottom: 30
-  }
+  };
+  
   const input = {
     width: "100%",
     minWidth: "550px",
     margin: "20px 0"
-  }
+  };
+  
   return (
     <Box style={container}>
       <Box style={formWrapper}>
@@ -73,11 +75,11 @@ export default function LoginPage({ handleClick }) {
           />
         </Box>
         <Box sx={{ display:"flex", flexDirection:"column", textAlign:"center",alignItems:"center"}}>
-          <Button onClick={(handleLogin)} variant="outlined" >
+          <Button onClick={ handleLogin } variant="outlined" >
             login
           </Button>
           <Typography sx={{margin:"20px 0",width: "80%"}}>if you do not have an account please</Typography>
-          <Button onClick={(handleClick)} variant="outlined">
+          <Button onClick={ handleLogin } variant="outlined">
             register
           </Button>
         </Box>

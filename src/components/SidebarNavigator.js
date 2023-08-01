@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/authContext/AuthContext";
 
 export default function SidebarNavigator() {
+
   const { t } = useTranslation();
   const { isDrawerOpen, toggleDrawer } = useDrawer();
   const { user } = useAuth();
