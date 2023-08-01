@@ -1,8 +1,15 @@
 {
-    "home": "Strona Główna",
-    "drivers": "Kierowcy",
-    "settings": "Ustawenia",
-    "language" : "Język",
-    "polish": "Polski",
-    "english": "Angielski"
-  }
+  "home": "Strona Główna",
+  "drivers": "Kierowcy",
+  "settings": "Ustawenia",
+  "language": "Język",
+  "polish": "Polski",
+  "english": "Angielski",
+  "cars": "Samochody",
+  "deliveringYourGoodsToYourDestinations": "Dostarczamy Twoje towary do miejsc docelowych.",
+  "loginPageOffer": "Oferujemy szeroką gamę usług dostawy dostosowanych do konkretnych potrzeb.",
+  "loginInfo": "Zaloguj się i daj nam znać, jak możemy pomóc. Czekamy na kontakt z Tobą.",
+  "noAccountInfo": "jeśli nie masz konta, proszę",
+  "login": "Zaloguj",
+  "register": "Zarejestruj Się"
+}

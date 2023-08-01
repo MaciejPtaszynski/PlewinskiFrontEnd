@@ -1,8 +1,15 @@
 {
-    "home": "Home",
-    "drivers": "Drivers",
-    "settings": "Settings",
-    "language": "Language",
-    "polish": "Polish",
-    "english": "English"
-  }
+  "home": "Home",
+  "drivers": "Drivers",
+  "settings": "Settings",
+  "language": "Language",
+  "polish": "Polish",
+  "english": "English",
+  "cars": "Cars",
+  "deliveringYourGoodsToYourDestinations": "Delivering your goods to your destinations.",
+  "loginPageOffer": "We are offering wide variety of delivery services tailored to your specific needs.",
+  "loginInfo": "Please login and let us know how we can help, we are looking to hear from you soon.",
+  "noAccountInfo": "if you do not have an account please",
+  "login": "Login",
+  "register": "Register"
+}

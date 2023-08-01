@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
-import { useAuth } from '../context/authContext/AuthContext';
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {useAuth} from '../context/authContext/AuthContext';
+import {Box, Button, TextField, Typography} from "@mui/material";
 import Img from "../assetss/pexels-albin-berlin-906982.jpg";
 import Logo from "../assetss/logotyp_plewinski.png"
-import { display, padding } from '@mui/system';
+import {useTranslation} from "react-i18next";
 
 export default function LoginPage() {
+
+  const {t} = useTranslation();
 
   const {login} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSelected, setIsSelected] = useState("login")
+
 
   const handleLogin = () => {
     login(email);
@@ -23,39 +27,39 @@ export default function LoginPage() {
     width: "100%",
     height: "100vh",
   };
-  
+
   const formWrapper = {
     backgroundColor: "whitesmoke",
     width: "600px",
     height: "100vh",
     display: "flex",
-    flexDirection:"column", 
-    alignItems:'center',
-    justifyContent:"center"
+    flexDirection: "column",
+    alignItems: 'center',
+    justifyContent: "center"
   };
-  
+
   const logo = {
     width: "100%",
     height: "200px",
     marginBottom: 30
   };
-  
+
   const input = {
     width: "100%",
     minWidth: "550px",
     margin: "20px 0"
   };
-  
+
   return (
     <Box style={container}>
       <Box style={formWrapper}>
-        <img style={logo} src={Logo} />
+        <img alt={"Plewinski logo"} style={logo} src={Logo}/>
         <Box sx={{width: "90%"}}>
-          <h2 style={{fontStyle: "italic"}}>Delivering your goods to your destinations.</h2>
-          <h4 style={{marginBottom:"-10px"}}>We are offering wide variety of delivery services tailored to your specific needs.</h4>
-          <h4>Please login and let us know how we can help, we are looking to hear from you soon.</h4>
+          <h2 style={{fontStyle: "italic"}}>{t("deliveringYourGoodsToYourDestinations")}</h2>
+          <h4 style={{marginBottom: "-10px"}}>{t("loginPageOffer")}</h4>
+          <h4>{t("loginInfo")}</h4>
         </Box>
-        <Box sx={{display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column"}}>
+        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
           <TextField
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -74,13 +78,14 @@ export default function LoginPage() {
             defaultValue=""
           />
         </Box>
-        <Box sx={{ display:"flex", flexDirection:"column", textAlign:"center",alignItems:"center"}}>
-          <Button onClick={ handleLogin } variant="outlined" >
-            login
+        <Box sx={{display: "flex", flexDirection: "column", textAlign: "center", alignItems: "center"}}>
+          <Button onClick={handleLogin} variant={isSelected ? "contained" : "outlined"}>
+            {t("login")}
           </Button>
-          <Typography sx={{margin:"20px 0",width: "80%"}}>if you do not have an account please</Typography>
-          <Button onClick={ handleLogin } variant="outlined">
-            register
+          <Typography sx={{margin: "20px 0", width: "80%"}}>{t("noAccountInfo")}</Typography>
+          <Button onClick={handleLogin} sx={{"&:hover": {backgroundColor: "#1565c0", color: "#ffffff"}}}
+                  variant={isSelected ? "outlined" : "contained"}>
+            {t("register")}
           </Button>
         </Box>
       </Box>

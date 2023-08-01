@@ -1,10 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {Box, Typography, useMediaQuery} from "@mui/material";
-import {useDrawer} from "../context/drawerContext/DrawerContext";
+import React, {useState} from 'react';
+import {Box, Tab} from "@mui/material";
 import img from "../assetss/pobrane.jpeg";
 import DriverCard from "./DriverCard";
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import {useTranslation} from "react-i18next";
 
-export default function DriversPage() {
+
+export default function DriversAndCarsPage() {
+
+  const {t} = useTranslation();
+
+  const [value, setValue] = useState(1);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const [car, setCar] = useState("");
 
@@ -90,6 +102,14 @@ export default function DriversPage() {
     flexDirection: 'column',
   };
 
+  const tabsWrapper = {
+    width: "calc(100% + 200px)",
+    display: 'flex',
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "column"
+  }
+
   const peopleList = people.map((item) => {
     return <Box key={item.id}>
       <DriverCard
@@ -108,31 +128,46 @@ export default function DriversPage() {
   return (
     <Box sx={{
       display: "flex",
-      flex: 1, alignItems: "center",
+      alignItems: "center",
       justifyContent: "center",
     }}>
-      <form>
-        <input
-          type="text"
-          name="firstName"
-          value={newDriver.firstName}
-          onChange={(e) => setNewDriver(e.target.value)}
-          placeholder="Imię"
-        />
-        <input
-          type="text"
-          name="lastName"
-          value={newDriver.lastName}
-          onChange={(e) => setNewDriver(e.target.value)}
-          placeholder="Nazwisko"
-        />
-        <button type="button" onClick={handleAddDriver}>
-          Dodaj kierowcę
-        </button>
-      </form>
-      <Box style={driversListWrapper}>
-        {peopleList}
+      <Box style={tabsWrapper}>
+        <TabContext value={value}>
+          <Box
+            sx={{borderBottom: 1, borderColor: 'divider', width: "100%"}}>
+            <TabList onChange={handleChange} variant={"fullWidth"}>
+              <Tab label={t("drivers")} value={1}/>
+              <Tab label={t("cars")} value={2}/>
+            </TabList>
+          </Box>
+          <Box sx={{width: "100%", display: "flex",}}>
+            <TabPanel value="1">Item One</TabPanel>
+            <TabPanel value="2">Item Two</TabPanel>
+          </Box>
+        </TabContext>
       </Box>
+      {/*<form>*/}
+      {/*  <input*/}
+      {/*    type="text"*/}
+      {/*    name="firstName"*/}
+      {/*    value={newDriver.firstName}*/}
+      {/*    onChange={(e) => setNewDriver(e.target.value)}*/}
+      {/*    placeholder="Imię"*/}
+      {/*  />*/}
+      {/*  <input*/}
+      {/*    type="text"*/}
+      {/*    name="lastName"*/}
+      {/*    value={newDriver.lastName}*/}
+      {/*    onChange={(e) => setNewDriver(e.target.value)}*/}
+      {/*    placeholder="Nazwisko"*/}
+      {/*  />*/}
+      {/*  <button type="button" onClick={handleAddDriver}>*/}
+      {/*    Dodaj kierowcę*/}
+      {/*  </button>*/}
+      {/*</form>*/}
+      {/*<Box style={driversListWrapper}>*/}
+      {/*  {peopleList}*/}
+      {/*</Box>*/}
     </Box>
   )
 };
