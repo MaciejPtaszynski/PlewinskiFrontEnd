@@ -1,17 +1,19 @@
-import React, {useState} from 'react';
-import {Box, Drawer, Typography, useMediaQuery} from "@mui/material";
+import React, { useState } from 'react';
+import { Box, Drawer, Typography, useMediaQuery } from "@mui/material";
 import HomeIcon from '@mui/icons-material/Home';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SettingsIcon from '@mui/icons-material/Settings';
-import {Link} from "react-router-dom";
-import {useDrawer} from "../context/drawerContext/DrawerContext";
-import {useTranslation} from "react-i18next";
-
+import { Link } from "react-router-dom";
+import { useDrawer } from "../context/drawerContext/DrawerContext";
+import { useTranslation } from "react-i18next";
+import { useAuth } from "../context/authContext/AuthContext";
 
 export default function SidebarNavigator() {
-  const {t} = useTranslation();
-  const {isDrawerOpen, toggleDrawer} = useDrawer();
-  
+
+  const { t } = useTranslation();
+  const { isDrawerOpen, toggleDrawer } = useDrawer();
+  const { user } = useAuth();
+
   const isMobile = useMediaQuery('(max-width: 1000px)');
   const [selectedButton, setSelectedButton] = useState("home");
 
@@ -105,7 +107,7 @@ export default function SidebarNavigator() {
               onClick={() => handleSelectedButton("home")}
               style={selectedButton === "home" ? iconWrapperActive : iconWrapper}>
           <HomeIcon
-            style={selectedButton === "home" ? iconStyleActive : iconStyle}/>
+            style={selectedButton === "home" ? iconStyleActive : iconStyle} />
           <Typography
             style={selectedButton === "home" ? iconTextActive : iconText}>{t("home")}</Typography>
         </Link>
@@ -113,18 +115,20 @@ export default function SidebarNavigator() {
               onClick={() => handleSelectedButton("drivers")}
               style={selectedButton === "drivers" ? iconWrapperActive : iconWrapper}>
           <PersonAddAlt1Icon
-            style={selectedButton === "drivers" ? iconStyleActive : iconStyle}/>
+            style={selectedButton === "drivers" ? iconStyleActive : iconStyle} />
           <Typography
             style={selectedButton === "drivers" ? iconTextActive : iconText}>{t("drivers")}</Typography>
         </Link>
-        <Link to={'settings'}
-              onClick={() => handleSelectedButton("settings")}
-              style={selectedButton === "settings" ? iconWrapperActive : iconWrapper}>
-          <SettingsIcon
-            style={selectedButton === "settings" ? iconStyleActive : iconStyle}/>
-          <Typography
-            style={selectedButton === "settings" ? iconTextActive : iconText}>{t("settings")}</Typography>
-        </Link>
+        {user && user.role === 'admin' ? (
+          <Link to={'settings'}
+                onClick={() => handleSelectedButton("settings")}
+                style={selectedButton === "settings" ? iconWrapperActive : iconWrapper}>
+            <SettingsIcon
+              style={selectedButton === "settings" ? iconStyleActive : iconStyle} />
+            <Typography
+              style={selectedButton === "settings" ? iconTextActive : iconText}>{t("settings")}</Typography>
+          </Link>
+        ) : null}
       </Box>
     </Drawer>
   )
