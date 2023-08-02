@@ -10,7 +10,6 @@ export default function CarTabPage() {
   const {t} = useTranslation();
 
   const [editCarIndex, setEditCarIndex] = useState(-1);
-  const [editedCar, setEditedCar] = useState({});
   const [cars, setCars] = useState(CarsDb);
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -19,7 +18,13 @@ export default function CarTabPage() {
   const handleCloseModal = () => {
     setOpenModal(false);
     setEditCarIndex(-1);
-    setEditedCar({});
+    setFormValues({
+      name: "",
+      year: "",
+      mileage: "",
+      isAvailable: true,
+      registrationNumber: "",
+    });
   };
 
   const [formValues, setFormValues] = useState({
@@ -42,7 +47,7 @@ export default function CarTabPage() {
         registrationNumber: registrationNumber,
       };
 
-      setCars([...cars, newItem]);
+      setCars([newItem, ...cars]);
       setFormValues({
         name: "",
         year: "",
@@ -72,13 +77,13 @@ export default function CarTabPage() {
 
   const handleEditCar = (index) => {
     setEditCarIndex(index);
-    setEditedCar(cars[index]);
+    setFormValues(cars[index]);
     handleOpenModal();
   };
 
   const handleSaveChanges = () => {
     const updatedCars = [...cars];
-    updatedCars[editCarIndex] = editedCar;
+    updatedCars[editCarIndex] = formValues;
     setCars(updatedCars);
     handleCloseModal();
   };
@@ -90,6 +95,7 @@ export default function CarTabPage() {
     alignItems: "center",
     gap: 10
   };
+
   const modalStyle = {
     display: "flex",
     flexDirection: "column",
@@ -129,14 +135,15 @@ export default function CarTabPage() {
 
   const CarList = cars.map((item, index) => (
     <Box key={item.id}>
-      <CarCard name={item.name}
-               mileage={item.mileage}
-               year={item.year}
-               plate={item.registrationNumber}
-               img={item.img}
-               isAvailable={item.isAvailable}
-               handleRemove={() => handleRemoveCar(item.id)}
-               handleEdit={() => handleEditCar(index)}
+      <CarCard
+        name={item.name}
+        mileage={item.mileage}
+        year={item.year}
+        plate={item.registrationNumber}
+        img={item.img}
+        isAvailable={item.isAvailable}
+        handleRemove={() => handleRemoveCar(item.id)}
+        handleEdit={() => handleEditCar(index)}
       />
     </Box>
   ));
