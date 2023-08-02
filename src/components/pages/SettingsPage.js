@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Typography, useMediaQuery} from "@mui/material";
-import {useDrawer} from "../context/drawerContext/DrawerContext";
+import {useDrawer} from "../../context/drawerContext/DrawerContext";
 
 export default function SettingsPage() {
   const {toggleDrawer} = useDrawer();

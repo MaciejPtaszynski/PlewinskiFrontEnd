@@ -9,7 +9,19 @@
   "deliveringYourGoodsToYourDestinations": "Dostarczamy Twoje towary do miejsc docelowych.",
   "loginPageOffer": "Oferujemy szeroką gamę usług dostawy dostosowanych do konkretnych potrzeb.",
   "loginInfo": "Zaloguj się i daj nam znać, jak możemy pomóc. Czekamy na kontakt z Tobą.",
-  "noAccountInfo": "jeśli nie masz konta, proszę",
+  "noAccountInfo": "lub",
   "login": "Zaloguj",
-  "register": "Zarejestruj Się"
+  "register": "Zarejestruj Się",
+  "yearOfProduction": "Rok produkcji",
+  "mileage": "Przebieg",
+  "available": "Dostępność",
+  "carIsAvailable": "Auto jest dostępne",
+  "carIsNotAvailable": "Auto jest niedostępne",
+  "delete": "Usuń",
+  "edit": "Edytuj",
+  "addNewCar": "Dodaj nowe auto",
+  "setNewCarAsAvailable": "Czy ustwaic samochod jako dostepny?",
+  "addCar": "Dodaj auto",
+  "saveChanges" : "Zapisz zmiany",
+  "editCar": "Edycja pojazdu"
 }

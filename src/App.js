@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {DrawerProvider} from './context/drawerContext/DrawerContext';
-import AppRoutes from './components/AppRoutes';
-import LoginPage from './components/LoginPage';
+import AppRoutes from './components/routes/AppRoutes';
+import LoginPage from './components/pages/LoginPage';
 import {Box} from '@mui/material';
 import {useAuth} from './context/authContext/AuthContext';
 

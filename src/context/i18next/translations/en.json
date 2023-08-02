@@ -9,7 +9,19 @@
   "deliveringYourGoodsToYourDestinations": "Delivering your goods to your destinations.",
   "loginPageOffer": "We are offering wide variety of delivery services tailored to your specific needs.",
   "loginInfo": "Please login and let us know how we can help, we are looking to hear from you soon.",
-  "noAccountInfo": "if you do not have an account please",
+  "noAccountInfo": "or",
   "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "yearOfProduction": "Year of production",
+  "mileage": "Mileage",
+  "available": "Availability",
+  "carIsAvailable": "Car is available",
+  "carIsNotAvailable": "Car is not available",
+  "delete": "Delete",
+  "edit": "Edit",
+  "addNewCar": "Add new car",
+  "setNewCarAsAvailable": "Set the car as available?",
+  "addCar": "Add Car",
+  "saveChanges": "Save Changes",
+  "editCar": "Edit Car"
 }

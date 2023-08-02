@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import SidebarNavigator from "./SidebarNavigator";
-import HomePage from "./HomePage";
-import DriversAndCarsPage from "./DriversAndCarsPAge";
-import SettingsPage from "./SettingsPage";
-import Header from "./Header";
+import SidebarNavigator from "../navigation/SidebarNavigator";
+import HomePage from "../pages/HomePage";
+import DriversAndCarsPage from "../pages/DriversAndCarsPage";
+import SettingsPage from "../pages/SettingsPage";
+import Header from "../Header";
 import {Box} from "@mui/material";
 
 export default function AppRoutes({handleClick}) {

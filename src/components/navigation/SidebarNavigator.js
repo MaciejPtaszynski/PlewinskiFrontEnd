@@ -4,9 +4,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Link } from "react-router-dom";
-import { useDrawer } from "../context/drawerContext/DrawerContext";
+import { useDrawer } from "../../context/drawerContext/DrawerContext";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "../context/authContext/AuthContext";
+import { useAuth } from "../../context/authContext/AuthContext";
 
 export default function SidebarNavigator() {
 

@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import {useAuth} from '../context/authContext/AuthContext';
+import {useAuth} from '../../context/authContext/AuthContext';
 import {Box, Button, TextField, Typography} from "@mui/material";
-import Img from "../assetss/pexels-albin-berlin-906982.jpg";
-import Logo from "../assetss/logotyp_plewinski.png"
+import Img from "../../assetss/pexels-albin-berlin-906982.jpg";
+import Logo from "../../assetss/logotyp_plewinski.png"
 import {useTranslation} from "react-i18next";
 
 export default function LoginPage() {
-
   const {t} = useTranslation();
 
   const {login} = useAuth();
@@ -59,7 +58,12 @@ export default function LoginPage() {
           <h4 style={{marginBottom: "-10px"}}>{t("loginPageOffer")}</h4>
           <h4>{t("loginInfo")}</h4>
         </Box>
-        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+        <Box sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}>
           <TextField
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -78,12 +82,18 @@ export default function LoginPage() {
             defaultValue=""
           />
         </Box>
-        <Box sx={{display: "flex", flexDirection: "column", textAlign: "center", alignItems: "center"}}>
-          <Button onClick={handleLogin} variant={isSelected ? "contained" : "outlined"}>
+        <Box sx={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+          alignItems: "center",
+          marginBottom: "20px"
+        }}>
+          <Button onClick={handleLogin} sx={{margin: 1}} variant={isSelected ? "contained" : "outlined"}>
             {t("login")}
           </Button>
-          <Typography sx={{margin: "20px 0", width: "80%"}}>{t("noAccountInfo")}</Typography>
-          <Button onClick={handleLogin} sx={{"&:hover": {backgroundColor: "#1565c0", color: "#ffffff"}}}
+          <Typography>{t("noAccountInfo")}</Typography>
+          <Button onClick={handleLogin} sx={{margin: 1, "&:hover": {backgroundColor: "#1565c0", color: "#ffffff"}}}
                   variant={isSelected ? "outlined" : "contained"}>
             {t("register")}
           </Button>
