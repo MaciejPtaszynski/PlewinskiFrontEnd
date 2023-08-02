@@ -11,7 +11,7 @@ import CarsTabPage from "./CarsTabPage";
 export default function DriversAndCarsPage() {
   const {t} = useTranslation();
 
-  const [value, setValue] = useState("2");
+  const [value, setValue] = useState("1");
 
   // funkcja odpowiedzialna za zmianę tabów
   const handleChange = (event, newValue) => {

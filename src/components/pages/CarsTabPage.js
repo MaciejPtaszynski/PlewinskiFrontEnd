@@ -187,7 +187,7 @@ export default function CarTabPage() {
             name="name"
             value={formValues.name}
             onChange={handleModalInputChange}
-            placeholder="Nazwa"
+            placeholder={t("vehicleBrand")}
           />
           <TextField
             style={inputStyle}
@@ -195,7 +195,7 @@ export default function CarTabPage() {
             name="year"
             value={formValues.year}
             onChange={handleModalInputChange}
-            placeholder="Rok produkcji"
+            placeholder={t("yearOfProduction")}
           />
           <TextField
             style={inputStyle}
@@ -203,7 +203,7 @@ export default function CarTabPage() {
             name="registrationNumber"
             value={formValues.registrationNumber}
             onChange={handleModalInputChange}
-            placeholder="Rejestracja"
+            placeholder={t("vehicleRegistration")}
           />
           <TextField
             style={inputStyle}
@@ -211,7 +211,7 @@ export default function CarTabPage() {
             name="mileage"
             value={formValues.mileage}
             onChange={handleModalInputChange}
-            placeholder="Przebieg"
+            placeholder={t("mileage")}
           />
           <label>
             {t("setNewCarAsAvailable")}

@@ -21,8 +21,8 @@ export default function CarCard({name, year, mileage, isAvailable, plate, img, h
   const handleRemoveClick = () => {
     Swal.fire({
       icon: 'warning',
-      title: t('confirmDeleteTitle'),
-      text: t('confirmDeleteText'),
+      title: t('confirmDeleteTitleCar'),
+      text: t('confirmDeleteTextCar'),
       showCancelButton: true,
       confirmButtonColor: '#d33',
       confirmButtonText: t('delete'),
