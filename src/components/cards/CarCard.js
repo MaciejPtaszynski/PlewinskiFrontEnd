@@ -3,6 +3,7 @@ import {Box, Button, Card, CardActions, CardContent, CardMedia, Typography} from
 import {useTranslation} from "react-i18next";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from 'sweetalert2';
 
 export default function CarCard({name, year, mileage, isAvailable, plate, img, handleRemove, handleEdit}) {
   const {t} = useTranslation();
@@ -16,6 +17,29 @@ export default function CarCard({name, year, mileage, isAvailable, plate, img, h
     isCardAvailableText = t('carIsNotAvailable');
     colorTextTernary = "red"
   }
+
+  const handleRemoveClick = () => {
+    Swal.fire({
+      icon: 'warning',
+      title: t('confirmDeleteTitle'),
+      text: t('confirmDeleteText'),
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      confirmButtonText: t('delete'),
+      cancelButtonText: t('cancel'),
+      customClass: {
+        container: 'Swal2-container',
+        title: 'Swal2-title',
+        content: 'Swal2-content',
+        confirmButton: 'Swal2-confirmButton',
+        cancelButton: 'Swal2-cancelButton'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleRemove(); // Wywołanie funkcji usuwającej auto
+      }
+    });
+  };
 
   return (
     <Card elevation={3} sx={{maxWidth: 500, minWidth: 340}}>
@@ -38,7 +62,6 @@ export default function CarCard({name, year, mileage, isAvailable, plate, img, h
         <Typography variant="body2" color="text.secondary">
           {t("mileage")}: {mileage} km
         </Typography>
-
         <Box sx={{display: "flex", flexDirection: "row", alignItems: "center"}}>
           <Typography variant="body2" color="text.secondary" mr={0.5}>
             {t("available")}: </Typography>
@@ -46,7 +69,7 @@ export default function CarCard({name, year, mileage, isAvailable, plate, img, h
         </Box>
         <CardActions sx={{display: "flex", justifyContent: "space-between", marginTop: 2}}>
           <Button variant={"contained"} startIcon={<DeleteIcon/>} color={"error"} size="small"
-                  onClick={handleRemove}>{t("delete")}</Button>
+                  onClick={handleRemoveClick}>{t("delete")}</Button>
           <Button variant={"contained"} startIcon={<ModeEditIcon/>} color={"info"} size="small"
                   onClick={handleEdit}>{t("edit")}</Button>
         </CardActions>

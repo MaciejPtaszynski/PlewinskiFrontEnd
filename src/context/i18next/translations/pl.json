@@ -22,6 +22,9 @@
   "addNewCar": "Dodaj nowe auto",
   "setNewCarAsAvailable": "Czy ustwaic samochod jako dostepny?",
   "addCar": "Dodaj auto",
-  "saveChanges" : "Zapisz zmiany",
-  "editCar": "Edycja pojazdu"
+  "saveChanges": "Zapisz zmiany",
+  "editCar": "Edycja pojazdu",
+  "confirmDeleteTitle": "Usunąć auto?",
+  "confirmDeleteText": "Czy napewno usunąć auto?",
+  "cancel": "Cofnij"
 }

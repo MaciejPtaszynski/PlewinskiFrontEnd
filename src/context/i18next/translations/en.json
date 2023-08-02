@@ -23,5 +23,8 @@
   "setNewCarAsAvailable": "Set the car as available?",
   "addCar": "Add Car",
   "saveChanges": "Save Changes",
-  "editCar": "Edit Car"
+  "editCar": "Edit Car",
+  "confirmDeleteTitle": "Remove car?",
+  "confirmDeleteText": "Do you want to delete the car?",
+  "cancel": "Cancel"
 }

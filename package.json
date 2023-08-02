@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@mui/lab": "^5.0.0-alpha.138"
+    "@mui/lab": "^5.0.0-alpha.138",
+    "sweetalert2": "^11.7.20"
   }
 }

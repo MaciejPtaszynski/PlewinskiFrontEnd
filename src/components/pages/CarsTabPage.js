@@ -5,6 +5,11 @@ import CarCard from "../cards/CarCard";
 import {Close} from "@mui/icons-material";
 import AddIcon from '@mui/icons-material/Add';
 import {useTranslation} from "react-i18next";
+import Swal from "sweetalert2";
+import noImageAvailable from "../../assetss/NoImageAvailable.jpeg";
+
+// Stałe zdjęcie, które będzie używane, gdy użytkownik nie wybierze własnego zdjęcia
+const defaultCarImage = noImageAvailable;
 
 export default function CarTabPage() {
   const {t} = useTranslation();
@@ -45,6 +50,7 @@ export default function CarTabPage() {
         mileage: mileage !== "" ? parseInt(mileage) : "",
         isAvailable: isAvailable,
         registrationNumber: registrationNumber,
+        img: defaultCarImage, // Automatycznie przypisujemy zdjęcie domyślne
       };
 
       setCars([newItem, ...cars]);
@@ -52,16 +58,22 @@ export default function CarTabPage() {
         name: "",
         year: "",
         mileage: "",
-        isAvailable: true, // Resetujemy na domyślną wartość
+        isAvailable: true,
         registrationNumber: "",
       });
-      setIsFormValid(false); // Resetujemy formularz po dodaniu auta
-      handleCloseModal(); // Zamknięcie modala po dodaniu auta
+      setIsFormValid(false);
+      Swal.fire({
+        icon: "success",
+        title: "Auto dodane",
+        customClass: {
+          container: "Swal2-container"
+        }
+      })
+      handleCloseModal();
     }
   };
 
   useEffect(() => {
-    // Sprawdzamy, czy wszystkie pola są wypełnione
     setIsFormValid(
       formValues.name.trim() !== "" &&
       formValues.year !== "" &&
@@ -74,6 +86,7 @@ export default function CarTabPage() {
     const removeCar = cars.filter((item) => item.id !== id);
     setCars(removeCar);
   };
+
 
   const handleEditCar = (index) => {
     setEditCarIndex(index);
@@ -91,9 +104,13 @@ export default function CarTabPage() {
   const carsListWrapper = {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    gap: 10
+    justifyContent: "center",
+    flexWrap: "wrap",
+    width: "100%"
+  };
+  const addCarBtn = {
+    marginBottom: 30,
   };
 
   const modalStyle = {
@@ -108,8 +125,9 @@ export default function CarTabPage() {
     width: 800,
     height: 500,
     backgroundColor: '#ffffff',
-    border: '2px solid #000',
+    border: '1px solid #000',
     boxShadow: 24,
+    borderRadius: 5,
     p: 4,
   };
 
@@ -134,7 +152,7 @@ export default function CarTabPage() {
   };
 
   const CarList = cars.map((item, index) => (
-    <Box key={item.id}>
+    <Box key={item.id} sx={{display: "flex"}}>
       <CarCard
         name={item.name}
         mileage={item.mileage}
@@ -150,14 +168,18 @@ export default function CarTabPage() {
 
   return (
     <Box style={carsListWrapper}>
-      <Button startIcon={<AddIcon/>} variant={"contained"} onClick={handleOpenModal}>{t("addCar")}</Button>
-      <Modal
-        hideBackdrop={true}
-        open={openModal}
-        onClose={handleCloseModal}
-      >
+      <Button
+        startIcon={<AddIcon/>}
+        style={addCarBtn}
+        variant="contained"
+        onClick={handleOpenModal}>
+        {t("addCar")}
+      </Button>
+      <Modal hideBackdrop={true} open={openModal} onClose={handleCloseModal}>
         <Box style={modalStyle}>
-          <Typography variant={"h5"}>{t(editCarIndex >= 0 ? "editCar" : "addNewCar")}</Typography>
+          <Typography variant="h5">
+            {t(editCarIndex >= 0 ? "editCar" : "addNewCar")}
+          </Typography>
           <Close style={modalCloseBtn} onClick={handleCloseModal}/>
           <TextField
             style={inputStyle}
@@ -204,18 +226,26 @@ export default function CarTabPage() {
               {t("saveChanges")}
             </Button>
           ) : (
-            <Button variant={isFormValid ? "contained" : "outlined"} onClick={() => {
-              if (isFormValid) {
-                handleAddCar();
-                handleCloseModal();
-              }
-            }} disabled={!isFormValid}>
+            <Button
+              variant="contained"
+              onClick={handleAddCar}
+              disabled={!isFormValid}
+            >
               {t("addCar")}
             </Button>
           )}
         </Box>
       </Modal>
-      {CarList}
+      <Box sx={{
+        width: "calc(100% -200px)",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 3,
+        justifyContent: "flex-end",
+        marginRight: "100px"
+      }}>
+        {CarList}
+      </Box>
     </Box>
   );
 }

@@ -28,8 +28,9 @@ export default function DriversAndCarsPage() {
             <Tab label={t("cars")} value={"2"}/>
           </TabList>
         </Box>
-        <TabPanel value="1"><DriverTabPage/></TabPanel>
-        <TabPanel value="2"><CarsTabPage/></TabPanel>
+        <TabPanel sx={{display: "flex", justifyContent: "flex-end", position: "relative"}}
+                  value="1"><DriverTabPage/></TabPanel>
+        <TabPanel sx={{display: "flex", justifyContent: "flex-end"}} value="2"><CarsTabPage/></TabPanel>
       </TabContext>
     </Box>
   )
