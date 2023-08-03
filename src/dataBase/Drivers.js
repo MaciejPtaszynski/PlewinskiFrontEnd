@@ -1,13 +1,16 @@
-import img from "../assetss/pobrane.jpeg";
+import img from "../assetss/avatarImg.jpeg";
 
-export default  [
+export default [
   {
     id: 1,
     firstName: "Anna",
     lastName: "Kowalska",
     pesel: "12345678901",
     isAvailable: true,
-    photo: img
+    photo: img,
+    identityDocument: "ABC123456",
+    drivingLicenseCategory: "B",
+    drivingLicenseExpirationDate: "2025-12-31",
   },
   {
     id: 2,
@@ -15,7 +18,10 @@ export default  [
     lastName: "Nowak",
     pesel: "23456789012",
     isAvailable: true,
-    photo: img
+    photo: img,
+    identityDocument: "XYZ789012",
+    drivingLicenseCategory: "A, B, C",
+    drivingLicenseExpirationDate: "2024-10-15",
   },
   {
     id: 3,
@@ -23,7 +29,10 @@ export default  [
     lastName: "Wiśniewska",
     pesel: "34567890123",
     isAvailable: true,
-    photo: img
+    photo: img,
+    identityDocument: "DEF456789",
+    drivingLicenseCategory: "B, C",
+    drivingLicenseExpirationDate: "2023-06-30",
   },
   {
     id: 4,
@@ -31,7 +40,10 @@ export default  [
     lastName: "Kowalczyk",
     pesel: "45678901234",
     isAvailable: true,
-    photo: img
+    photo: img,
+    identityDocument: "GHI567890",
+    drivingLicenseCategory: "B, D",
+    drivingLicenseExpirationDate: "2026-08-20",
   },
   {
     id: 5,
@@ -39,6 +51,9 @@ export default  [
     lastName: "Kowal",
     pesel: "56789012345",
     isAvailable: true,
-    photo: img
+    photo: img,
+    identityDocument: "JKL901234",
+    drivingLicenseCategory: "B",
+    drivingLicenseExpirationDate: "2022-11-05",
   }
 ];

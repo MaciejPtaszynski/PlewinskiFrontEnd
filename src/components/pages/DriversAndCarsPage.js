@@ -19,16 +19,17 @@ export default function DriversAndCarsPage() {
   };
 
   return (
-    <Box sx={{width: "100%"}}>
+    <Box sx={{width: "100%", backgroundImage: "linear-gradient(to right bottom, #051937, #444964, #808195, #bfbec8, #ffffff)"}}>
       <TabContext value={value}>
         <Box
-          sx={{borderBottom: 1, borderColor: 'divider', width: "100%"}}>
-          <TabList onChange={handleChange} variant="fullWidth">
+          sx={{borderBottom: 1, borderTop: 1,  borderColor: '#f5f5f5'}}>
+          <TabList onChange={handleChange} variant="fullWidth"
+                   sx={{backgroundColor: "#fff"}}>
             <Tab label={t("drivers")} value={"1"}/>
             <Tab label={t("cars")} value={"2"}/>
           </TabList>
         </Box>
-        <TabPanel sx={{display: "flex", justifyContent: "flex-end", position: "relative"}}
+        <TabPanel sx={{display: "flex", justifyContent: "center", position: "relative", width: "100%"}}
                   value="1"><DriverTabPage/></TabPanel>
         <TabPanel sx={{display: "flex", justifyContent: "flex-end"}} value="2"><CarsTabPage/></TabPanel>
       </TabContext>

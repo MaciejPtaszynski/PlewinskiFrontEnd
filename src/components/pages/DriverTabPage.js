@@ -150,6 +150,9 @@ export default function DriverTabPage() {
           pesel={item.pesel}
           isAvailable={item.isAvailable}
           photo={item.photo}
+          identityDocument={item.identityDocument}
+          drivingLicenseCategory={item.drivingLicenseCategory}
+          drivingLicenseExpirationDate={item.drivingLicenseExpirationDate}
           handleRemove={() => handleRemoveDriver(item.id)}
           handleEdit={() => handleEditDriver(index)}
         />
@@ -161,9 +164,8 @@ export default function DriverTabPage() {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
     flexWrap: "wrap",
-    width: "100%",
+    height: "100vh"
   };
 
   const addCarBtn = {
