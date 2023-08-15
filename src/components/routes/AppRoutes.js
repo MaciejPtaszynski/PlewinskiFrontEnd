@@ -10,15 +10,17 @@ import {Box} from "@mui/material";
 export default function AppRoutes({handleClick}) {
   return (
     <BrowserRouter>
-      <SidebarNavigator/>
-      <Box sx={{display: "flex", justifyContent: "flex-end"}}>
-        <Header handleLogout={handleClick}/>
+      <Box>
+        <SidebarNavigator />
+        <Box>
+          <Header handleLogout={handleClick}/>
+          <Routes>
+            <Route path={'/'} element={<HomePage/>}/>
+            <Route path={'drivers'} element={<DriversAndCarsPage/>}/>
+            <Route path={'settings'} element={<SettingsPage/>}/>
+          </Routes>
+        </Box>
       </Box>
-      <Routes>
-        <Route path={'/'} element={<HomePage/>}/>
-        <Route path={'drivers'} element={<DriversAndCarsPage/>}/>
-        <Route path={'settings'} element={<SettingsPage/>}/>
-      </Routes>
     </BrowserRouter>
   )
 }

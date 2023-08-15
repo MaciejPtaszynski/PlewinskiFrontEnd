@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useDrawer } from "../../context/drawerContext/DrawerContext";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/authContext/AuthContext";
+import Logo from "../../assetss/logotyp_plewinski.png"
 
 export default function SidebarNavigator() {
 
@@ -22,9 +23,7 @@ export default function SidebarNavigator() {
   };
 
   const logo = {
-    fontSize: "1.75rem",
-    textAlign: "center",
-    marginTop: 10
+    maxWidth: "200px",
   };
 
   const navContainer = {
@@ -101,7 +100,7 @@ export default function SidebarNavigator() {
       variant={!isMobile && "permanent"}
       onClose={toggleDrawer}
       anchor={'left'}>
-      <Typography style={logo}>Plewiński Logistic</Typography>
+       <img alt={"Plewinski logo"} style={logo} src={Logo}/>
       <Box style={navContainer}>
         <Link to={'/'}
               onClick={() => handleSelectedButton("home")}
