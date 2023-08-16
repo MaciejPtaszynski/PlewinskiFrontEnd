@@ -19,7 +19,7 @@ export default function DriversAndCarsPage() {
   };
 
   return (
-    <Box sx={{marginTop: 10}}>
+    <Box sx={{marginTop: 10, backgroundColor: "whitesmoke"}}>
       <TabContext value={value}>
         <Box
           sx={{borderBottom: 1, borderTop: 1,  borderColor: '#f5f5f5'}}>
