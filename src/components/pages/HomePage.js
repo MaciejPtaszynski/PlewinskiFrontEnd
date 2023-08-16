@@ -8,7 +8,7 @@ export default function HomePage() {
   const isMobile = useMediaQuery('(max-width: 1000px)');
   
   return (
-    <Box >
+    <Box>
       
     </Box>
   )
