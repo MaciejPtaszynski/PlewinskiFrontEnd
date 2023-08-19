@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Checkbox, Modal, TextField, Typography} from "@mui/material";
+import {Box, Button, Checkbox, Modal, TextField, Typography, useMediaQuery} from "@mui/material";
 import CarsDb from "../../dataBase/Cars";
 import CarCard from "../cards/CarCard";
 import {Close} from "@mui/icons-material";
@@ -13,7 +13,7 @@ const defaultCarImage = noImageAvailable;
 
 export default function CarTabPage() {
   const {t} = useTranslation();
-
+  const isMobile = useMediaQuery('(max-width: 1000px)');
   const [editCarIndex, setEditCarIndex] = useState(-1);
   const [cars, setCars] = useState(CarsDb);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -107,7 +107,8 @@ export default function CarTabPage() {
     alignItems: "center",
     justifyContent: "center",
     flexWrap: "wrap",
-    width: "100%"
+    width: "100%",
+    marginLeft: isMobile ? "0px": "205px",
   };
   const addCarBtn = {
     marginBottom: 30,
@@ -241,8 +242,7 @@ export default function CarTabPage() {
         display: "flex",
         flexWrap: "wrap",
         gap: 3,
-        justifyContent: "flex-end",
-        marginRight: "100px"
+        justifyContent: "center",
       }}>
         {CarList}
       </Box>
