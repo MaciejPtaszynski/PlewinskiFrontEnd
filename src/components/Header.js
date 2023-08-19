@@ -95,7 +95,7 @@ export default function Header() {
         </Select>
       </FormControl> */}
       </Box>
-        <Box sx={{backgrounColor: "linear-gradient(to top, #e4edff, #edf1ff, #f4f5ff, #fafaff, #ffffff)",  width: "80%", height:"100px", marginBottom: -6, borderRadius: "20px", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",}}>
+        <Box sx={{backgroundImage: "linear-gradient( to top, #ffffff 20%, #E7EFFF 80%)", width: "80%", height:"100px", marginBottom: -6, borderRadius: "20px", boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",}}>
           <Box sx={{display: "flex",justifyContent:"flexStart",alignItems:"center",flexDirection: "row"}}> 
             <Avatar sx={{width:"80px", height:"80px", borderRadius: "15px", margin: "8px"}} src={user.role === "admin" ? adminAvatar : imgAvatar} variant="rounded">
             </Avatar>

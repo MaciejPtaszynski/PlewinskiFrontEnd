@@ -162,10 +162,12 @@ export default function DriverTabPage() {
 
   const driversListWrapper = {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "flex-end",
     flexWrap: "wrap",
-    height: "100vh"
+    width: "calc(100% - 200px)",
+
   };
 
   const addCarBtn = {
@@ -282,8 +284,7 @@ export default function DriverTabPage() {
           display: "flex",
           flexWrap: "wrap",
           gap: 3,
-          justifyContent: "flex-end",
-          marginRight: "100px",
+          justifyContent: "center",
         }}
       >
         {peopleList}
