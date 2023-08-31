@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {Box, FormControl, InputLabel, MenuItem, Select, useMediaQuery,Typography, Avatar, } from "@mui/material";
 import {useDrawer} from "../context/drawerContext/DrawerContext";
 import {useTranslation} from "react-i18next";
@@ -11,6 +12,8 @@ import adminAvatar from "../assetss/pobrane.jpeg";
 import {useLocation} from "react-router-dom";
 
 export default function Header() {
+
+  
   const {logout, user} = useAuth();
   const {toggleDrawer} = useDrawer();
   const {t, i18n} = useTranslation();
@@ -78,7 +81,8 @@ export default function Header() {
   }
 
   return (
-    <Box sx={{display: "flex", justifyContent: "center",paddingLeft: "10px"}}>
+    <Box>
+    <Box sx={{display: "flex", justifyContent: "center",paddingLeft: "10px", flexDirection: "column"}}>
       <Box style={backgroungImg}>
       <Box style={actionIcons}>{isMobile && <MenuIcon style={menuIcon} onClick={toggleDrawer}>open drawer</MenuIcon>}
       <LogoutIcon onClick={logout} style={logoutIcon}/>
@@ -103,6 +107,10 @@ export default function Header() {
           </Box>
         </Box>
       </Box>
+      
+        
+      </Box>
     </Box>
+    
   )
 };
