@@ -128,6 +128,16 @@ export default function SidebarNavigator() {
               style={selectedButton === "settings" ? iconTextActive : iconText}>{t("settings")}</Typography>
           </Link>
         ) : null}
+        {user && user.role === 'admin' ? (
+        <Link to={'orders'}
+                onClick={() => handleSelectedButton("orders")}
+                style={selectedButton === "orders" ? iconWrapperActive : iconWrapper}>
+            <SettingsIcon
+              style={selectedButton === "orders" ? iconStyleActive : iconStyle} />
+            <Typography
+              style={selectedButton === "orders" ? iconTextActive : iconText}>{t("orders")}</Typography>
+          </Link>
+          ) : null}
       </Box>
     </Drawer>
   )

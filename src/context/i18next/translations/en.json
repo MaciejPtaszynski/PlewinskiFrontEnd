@@ -43,5 +43,6 @@
   "vehicleBrand": "Vehicle Brand",
   "vehicleRegistration": "Vehicle registration",
   "editConfirmed": "Edit Confirmed",
-  "editModified": "Edit Modified"
+  "editModified": "Edit Modified",
+  "orders": "Orders"
 }

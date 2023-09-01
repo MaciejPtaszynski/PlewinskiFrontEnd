@@ -43,5 +43,6 @@
   "vehicleBrand": "Marka pojazdu",
   "vehicleRegistration": "Numery rejestracyjne",
   "editConfirmed": "Dokonano zmian",
-  "editModified": "Edycja zakończona powodzeniem"
+  "editModified": "Edycja zakończona powodzeniem",
+  "orders": "Zamówienia"
 }
