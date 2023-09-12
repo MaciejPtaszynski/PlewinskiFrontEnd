@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import DriversAndCarsPage from "../pages/DriversAndCarsPage";
 import SettingsPage from "../pages/SettingsPage";
 import Header from "../Header";
+import Orders from "../pages/Orders";
 import {Box} from "@mui/material";
 
 export default function AppRoutes({handleClick}) {
@@ -19,6 +20,7 @@ export default function AppRoutes({handleClick}) {
             <Route path={'/'} element={<HomePage/>}/>
             <Route path={'drivers'} element={<DriversAndCarsPage/>}/>
             <Route path={'settings'} element={<SettingsPage/>}/>
+            <Route path={'orders'} element={<Orders/>}/>
           </Routes>
         </Box>
       </Box>

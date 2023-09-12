@@ -5,6 +5,7 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import { PieChart } from '@mui/x-charts/PieChart';
 
 
+
 export default function HomePage() {
 
   const { t, i18n } = useTranslation();
@@ -35,14 +36,16 @@ export default function HomePage() {
                         backgroundColor: "whitesmoke", 
                         boxShadow: "-2px 8px 16px -5px rgba(66, 68, 90, 1)", 
                         borderRadius: "15px", 
-                        gap: 10 }
+                        gap: 10,
+                        width: "500px"
+                       }
 
   return (
     <Box style={boxPosition}>
       <Box style={chartContent}>
         <LineChart
-          width={750}
-          height={400}
+          width={500}
+          height={300}
           series={[
             { data: pData, label: 'pv' },
             { data: uData, label: 'uv' },
@@ -52,7 +55,7 @@ export default function HomePage() {
       </Box>
       <Box style={chartContent}>
         <LineChart sx={{ width: "800px", backgroundColor: "whitesmoke", boxShadow: "grey", borderRadius: "15px" }}
-          width={750}
+          width={500}
           height={300}
           series={[
             { data: pData, label: 'pv' },
@@ -63,8 +66,8 @@ export default function HomePage() {
       </Box>
       <Box style={chartContent}>
         <LineChart
-          width={750}
-          height={400}
+          width={500}
+          height={300}
           series={[
             { data: pData, label: 'pv' },
             { data: uData, label: 'uv' },
@@ -87,8 +90,8 @@ export default function HomePage() {
               cy: 150,
             }
           ]}
-          width={800}
-          height={400}
+          width={500}
+          height={300}
         />
       </Box>
     </Box>
