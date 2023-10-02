@@ -15,25 +15,31 @@ import {
  */
 const OrderForm = () => {
   // Dane klienta
-  const [clientData, setClientData] = useState({
+  const initialClientData = {
     name: "",
     address: "",
     phone: "",
     email: "",
-  });
+  };
 
   // Dane zamówienia
-  const [orderData, setOrderData] = useState({
+  const initialOrderData = {
     date: "",
     deliveryDate: "",
     quantity: "",
     productType: "",
     price: "",
     comment: "",
-  });
+  };
 
   // Błędy walidacji
-  const [validationErrors, setValidationErrors] = useState({});
+  const initialValidationErrors = {};
+
+  // Stan z listą formularzy zamówień
+  const [orders, setOrders] = useState([]);
+  const [clientData, setClientData] = useState({ ...initialClientData });
+  const [orderData, setOrderData] = useState({ ...initialOrderData });
+  const [validationErrors, setValidationErrors] = useState({ ...initialValidationErrors });
 
   // Obsługa zmiany danych klienta
   const handleClientDataChange = (event) => {
@@ -93,152 +99,208 @@ const OrderForm = () => {
     event.preventDefault();
 
     if (validateData()) {
-      // Wysłanie danych na serwer
-      console.log("Dane zostały wysłane na serwer:", clientData, orderData);
+      // Dodanie aktualnego zamówienia do listy
+      setOrders([...orders, { clientData, orderData }]);
+
+      // Zresetowanie formularza
+      setClientData({ ...initialClientData });
+      setOrderData({ ...initialOrderData });
+      setValidationErrors({ ...initialValidationErrors });
     } else {
       console.log("Formularz zawiera błędy. Nie można wysłać danych.");
     }
   };
-const inputStyle={margin: "20px"}
-  return (
 
-    <FormControl className="order-form" style={{marginLeft: "205px", marginTop: "200px", display: "flex", justifyContent: "center", flexDirection:"row", gap: 20}}>
-      <Box >
-      <Typography variant="h4">Dane klienta</Typography>
-      <Box sx={{display:"flex", flexDirection: "column"}}>
-        <TextField
-          style={inputStyle}
-          id="name"
-          name="name"
-          label="Imię i nazwisko"
-          value={clientData.name}
-          onChange={handleClientDataChange}
-          error={!!validationErrors.name}
-          helperText={validationErrors.name}
-        />
-     
-        <TextField
-        style={inputStyle}
-          id="address"
-          name="address"
-          label="Adres"
-          value={clientData.address}
-          onChange={handleClientDataChange}
-          error={!!validationErrors.address}
-          helperText={validationErrors.address}
-        />
-      
-        <TextField
-        style={inputStyle}
-          id="phone"
-          name="phone"
-          label="Numer telefonu"
-          value={clientData.phone}
-          onChange={handleClientDataChange}
-          error={!!validationErrors.phone}
-          helperText={validationErrors.phone}
-        />
-      
-        <TextField
-        style={inputStyle}
-          id="email"
-          name="email"
-          label="Adres e-mail"
-          value={clientData.email}
-          onChange={handleClientDataChange}
-          error={!!validationErrors.email}
-          helperText={validationErrors.email}
-        />
-      </Box>
-      </Box>
-      <Box>
-      <Typography variant="h4">Dane zamówienia</Typography>
-      <Box>
-        <TextField
-        style={inputStyle}
-          id="date"
-          name="date"
-          label="Data zamówienia"
-          type="text"
-          value={orderData.date}
-          onChange={handleOrderDataChange}
-          error={!!validationErrors.date}
-          helperText={validationErrors.date}
-        />
-      
-        <TextField
-        style={inputStyle}
-          id="deliveryDate"
-          name="deliveryDate"
-          label="Data dostawy"
-          type="text"
-          value={orderData.deliveryDate}
-          onChange={handleOrderDataChange}
-          error={!!validationErrors.deliveryDate}
-          helperText={validationErrors.deliveryDate}
-        />
-      {/* <Box>
-        <InputLabel id="productTypeLabel">Rodzaj produktów</InputLabel>
-        <select
-        // style={inputStyle}
-          id="productType"
-          name="productType"
-          labelId="productTypeLabel"
-          label="koń"
-          value={orderData.productType}
-          onChange={handleOrderDataChange}
-          error={!!validationErrors.productType}
-        >
-          <MenuItem value="Produkt 1">Produkt 1</MenuItem>
-          <MenuItem value="Produkt 2">Produkt 2</MenuItem>
-          <MenuItem value="Produkt 3">Produkt 3</MenuItem>
-        </select>
-        </Box> */}
-        <TextField
-        style={inputStyle}
-          id="quantity"
-          name="quantity"
-          label="Ilość produktów"
-          type="number"
-          value={orderData.quantity}
-          onChange={handleOrderDataChange}
-          error={!!validationErrors.quantity}
-          helperText={validationErrors.quantity}
-        />
-      
-        <TextField
-        style={inputStyle}
-          id="price"
-          name="price"
-          label="Cena"
-          type="number"
-          value={orderData.price}
-          onChange={handleOrderDataChange}
-          error={!!validationErrors.price}
-          helperText={validationErrors.price}
-        />
-      
-        <TextField
-        style={inputStyle}
-          id="comment"
-          name="comment"
-          label="Komentarz"
-          multiline
-          rows={3}
-          value={orderData.comment}
-          onChange={handleOrderDataChange}
-          error={!!validationErrors.comment}
-          helperText={validationErrors.comment}
-        />
-       
-      </Box>
-      <Button variant="contained" color="primary" onClick={handleSubmit} sx={{}}>
-        Złóż zamówienie
-      </Button>
-      </Box>
-      
-    </FormControl>
-    
+  const inputStyle = { margin: "20px" };
+
+  return (
+    <div>
+      <FormControl
+        style={{
+          marginLeft: "220px",
+          marginTop: "100px",
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Box sx={{ width: 300 }}>
+          <Typography variant="h4">Dane klienta</Typography>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <TextField
+              style={inputStyle}
+              id="name"
+              name="name"
+              variant={"outlined"}
+              label="Imię i nazwisko"
+              value={clientData.name}
+              onChange={handleClientDataChange}
+              error={!!validationErrors.name}
+              helperText={validationErrors.name}
+            />
+
+            <TextField
+              style={inputStyle}
+              id="address"
+              name="address"
+              variant={"outlined"}
+              label="Adres"
+              value={clientData.address}
+              onChange={handleClientDataChange}
+              error={!!validationErrors.address}
+              helperText={validationErrors.address}
+            />
+
+            <TextField
+              style={inputStyle}
+              id="phone"
+              name="phone"
+              variant={"outlined"}
+              label="Numer telefonu"
+              value={clientData.phone}
+              onChange={handleClientDataChange}
+              error={!!validationErrors.phone}
+              helperText={validationErrors.phone}
+            />
+
+            <TextField
+              style={inputStyle}
+              id="email"
+              name="email"
+              variant={"outlined"}
+              label="Adres e-mail"
+              value={clientData.email}
+              onChange={handleClientDataChange}
+              error={!!validationErrors.email}
+              helperText={validationErrors.email}
+            />
+          </Box>
+
+          <Typography variant="h4">Dane zamówienia</Typography>
+          <Box>
+            <TextField
+              style={inputStyle}
+              id="date"
+              name="date"
+              variant={"outlined"}
+              label="Data zamówienia"
+              type="text"
+              value={orderData.date}
+              onChange={handleOrderDataChange}
+              error={!!validationErrors.date}
+              helperText={validationErrors.date}
+            />
+
+            <TextField
+              style={inputStyle}
+              id="deliveryDate"
+              variant={"outlined"}
+              name="deliveryDate"
+              label="Data dostawy"
+              type="text"
+              value={orderData.deliveryDate}
+              onChange={handleOrderDataChange}
+              error={!!validationErrors.deliveryDate}
+              helperText={validationErrors.deliveryDate}
+            />
+
+            <InputLabel id="productType">Produkt</InputLabel>
+            <Select
+              style={inputStyle}
+              id="productType"
+              name="productType"
+              labelId="productType"
+              variant={"outlined"}
+              value={orderData.productType}
+              onChange={handleOrderDataChange}
+              error={!!validationErrors.productType}
+            >
+              <MenuItem value="Produkt 1">Produkt 1</MenuItem>
+              <MenuItem value="Produkt 2">Produkt 2</MenuItem>
+              <MenuItem value="Produkt 3">Produkt 3</MenuItem>
+            </Select>
+
+            <TextField
+              style={inputStyle}
+              id="quantity"
+              name="quantity"
+              variant={"outlined"}
+              label="Ilość produktów"
+              type="number"
+              value={orderData.quantity}
+              onChange={handleOrderDataChange}
+              error={!!validationErrors.quantity}
+              helperText={validationErrors.quantity}
+            />
+
+            <TextField
+              style={inputStyle}
+              id="price"
+              name="price"
+              variant={"outlined"}
+              label="Cena"
+              type="number"
+              value={orderData.price}
+              onChange={handleOrderDataChange}
+              error={!!validationErrors.price}
+              helperText={validationErrors.price}
+            />
+
+            <TextField
+              style={inputStyle}
+              id="comment"
+              name="comment"
+              variant={"outlined"}
+              label="Komentarz"
+              multiline
+              rows={3}
+              value={orderData.comment}
+              onChange={handleOrderDataChange}
+              error={!!validationErrors.comment}
+              helperText={validationErrors.comment}
+            />
+
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+              sx={{}}
+            >
+              Złóż zamówienie
+            </Button>
+          </Box>
+        </Box>
+      </FormControl>
+
+      {/* Wyświetlanie listy zamówień */}
+      {orders.length > 0 && (<Box sx={{ display: "flex", texAlign: "center"}}>
+        <div style={{marginLeft: "220px" ,display: "flex", flexDirection: "column", justifyContent: "center"}}>
+          <Typography variant="h4">Lista zamówień</Typography>
+          {orders.map((order, index) => (
+            <div key={index}>
+              <Typography variant="h6">Zamówienie {index + 1}</Typography>
+              <div>
+                <Typography variant="h6">Dane klienta:</Typography>
+                <p>Imię i nazwisko: {order.clientData.name}</p>
+                <p>Adres: {order.clientData.address}</p>
+                <p>Numer telefonu: {order.clientData.phone}</p>
+                <p>Adres e-mail: {order.clientData.email}</p>
+              </div>
+              <div>
+                <Typography variant="h6">Dane zamówienia:</Typography>
+                <p>Data zamówienia: {order.orderData.date}</p>
+                <p>Data dostawy: {order.orderData.deliveryDate}</p>
+                <p>Rodzaj produktu: {order.orderData.productType}</p>
+                <p>Ilość produktów: {order.orderData.quantity}</p>
+                <p>Cena: {order.orderData.price}</p>
+                <p>Komentarz: {order.orderData.comment}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        </Box>
+      )}
+    </div>
   );
 };
 
