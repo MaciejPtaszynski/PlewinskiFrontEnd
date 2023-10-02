@@ -197,7 +197,7 @@ const OrderForm = () => {
               variant={"outlined"}
               name="deliveryDate"
               label="Data dostawy"
-              type="text"
+              type="number"
               value={orderData.deliveryDate}
               onChange={handleOrderDataChange}
               error={!!validationErrors.deliveryDate}
