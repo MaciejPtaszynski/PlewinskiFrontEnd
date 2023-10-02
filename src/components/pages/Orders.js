@@ -215,9 +215,9 @@ const OrderForm = () => {
               onChange={handleOrderDataChange}
               error={!!validationErrors.productType}
             >
-              <MenuItem value="Produkt 1">Produkt 1</MenuItem>
-              <MenuItem value="Produkt 2">Produkt 2</MenuItem>
-              <MenuItem value="Produkt 3">Produkt 3</MenuItem>
+              <MenuItem value="Produkt 1">Opcja 1</MenuItem>
+              <MenuItem value="Produkt 2">Opcja 2</MenuItem>
+              <MenuItem value="Produkt 3">Opcja 3</MenuItem>
             </Select>
 
             <TextField
@@ -239,7 +239,7 @@ const OrderForm = () => {
               name="price"
               variant={"outlined"}
               label="Cena"
-              type="text"
+              type="number"
               value={orderData.price}
               onChange={handleOrderDataChange}
               error={!!validationErrors.price}
