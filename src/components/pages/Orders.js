@@ -239,7 +239,7 @@ const OrderForm = () => {
               name="price"
               variant={"outlined"}
               label="Cena"
-              type="number"
+              type="text"
               value={orderData.price}
               onChange={handleOrderDataChange}
               error={!!validationErrors.price}
